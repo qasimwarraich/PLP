@@ -13,5 +13,5 @@ You may use the `make clean` command to delete the produced binary.
 
 ### Screenshot  
 
-![helloworld](./img/screenshot_hellocpp.png)
+![helloworld](../img/screenshot_hellocpp.png)
 

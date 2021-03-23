@@ -14,5 +14,5 @@ You may use the `make clean` command to delete the produced binary.
 
 ### Screenshot
 
-![fizzbuzz](./img/fizzbuzz.png)
+![fizzbuzz](../img/fizzbuzz.png)
 
