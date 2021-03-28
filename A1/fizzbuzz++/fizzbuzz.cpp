@@ -29,7 +29,7 @@ void fizzbuzz(int m, int n, int fizz, int buzz)
 int main()
 {
     /* Flag for program looping */
-    bool exit = 0;
+    static bool exit = 0;
     std::string user_input;
     printer('w');
 
