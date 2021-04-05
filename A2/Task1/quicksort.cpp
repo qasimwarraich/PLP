@@ -2,8 +2,6 @@
 #include <vector>
 #include <utility>
 
-/* void swap(int* a, int* b); */ 
-
 template <class T>
 void print_array(std::vector <T> &arr);
 
@@ -34,13 +32,6 @@ void quicksort(std::vector <T> &arr, int low, int high)
     }
 }
 
-
-/* void swap(int* a, int* b) */
-/* { */
-/*     int t = *a; */
-/*     *a = *b; */
-/*     *b = t; */
-/* } */
 
 template <class T>
 void print_array(std::vector <T> &arr)
