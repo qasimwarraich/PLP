@@ -11,17 +11,16 @@ void xml_parse()
 
     XMLDocument doc;
     doc.LoadFile("books.xml");
+
     XMLElement *pRoot = doc.FirstChildElement("bookstore");
-    XMLElement *pBook = pRoot->FirstChildElement("book");
-    XMLElement *pYear = pBook->FirstChildElement("price");
-    std::cout << pYear->GetText() << '\n';
 
     int count = 0; 
     float totalprice = 0; 
+
     for (XMLElement* e = pRoot->FirstChildElement("book"); e != NULL; e = e->NextSiblingElement("book")) {
         XMLElement* pPrice = e->FirstChildElement("price");
         totalprice += atof(pPrice->GetText());
-        count ++;
+        count++;
     }
     std::cout << "Number of books: " << count << '\n';
     std::cout << "Total Price: " << totalprice << '\n';
@@ -47,7 +46,6 @@ std::string curl_url_to_file(const std::string & url)
     curl_easy_setopt(curl_handle, CURLOPT_WRITEDATA, &output);
     curl_easy_perform(curl_handle); 
     curl_easy_cleanup(curl_handle);
-
 
     outputfile.open("books.xml");
     outputfile << output;
