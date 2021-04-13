@@ -86,7 +86,7 @@ int main(int argc, char* argv[])
     options.add_options()
         ("n,numbers", "Numerical Range", cxxopts::value<int>())
         ("c,choices", "Number of lottery choices", cxxopts::value<int>())
-        ("p,pot", "Define winning pot size", cxxopts::value<int>()->default_value("1000"));
+        ("p,pot", "Define winning pot size", cxxopts::value<int>()->default_value("1000000"));
 
     auto result = options.parse(argc, argv);
 

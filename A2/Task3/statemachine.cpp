@@ -16,7 +16,7 @@ std::map<std::string, std::string> parse_transitions()
     std::string temp;
     std::map<std::string, std::string> transitions;
 
-    /* Parse the states */
+
     while ( std::getline(infile, temp) ){
 
         if (temp.length() == 0)
@@ -78,27 +78,27 @@ int main()
 {
     std::map<std::string, std::string> states = parse_states();
     std::map<std::string, std::string> transitions = parse_transitions();
-    print_map(states);
+    print_map(transitions);
 
-    bool exit = 0;
+/*     bool exit = 0; */
     
-    while (!exit) {
+/*     while (!exit) { */
 
-        std::string input;
-        auto current_state = states["*Ready"];
+/*         std::string input; */
+/*         auto current_state = states["*Ready"]; */
 
-        if (current_state == states["*Ready"]){
-            std::cout << "[Ready] " << current_state << '\n';
-            std::cin >> input;
-            current_state = states[input];
-        }
-        if (current_state == states["+Exit"]) {
-            std::cout << "[Exit] " << current_state << '\n';
-            exit = 1;
-            break;
-        }
+/*         if (current_state == states["*Ready"]){ */
+/*             std::cout << "[Ready] " << current_state << '\n'; */
+/*             std::cin >> input; */
+/*             current_state = states[input]; */
+/*         } */
+/*         if (current_state == states["+Exit"]) { */
+/*             std::cout << "[Exit] " << current_state << '\n'; */
+/*             exit = 1; */
+/*             break; */
+/*         } */
 
-    }
+/*     } */
 
     return 0; 
 }
