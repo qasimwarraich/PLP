@@ -121,6 +121,7 @@ int main()
         else{
             std::cout << "Invalid Input, please try again" << '\n';
             current_state = previous_state;
+            continue;
         }
     }
 
