@@ -3,8 +3,6 @@
 #include <iostream>
 #include <unistd.h>
 #include <math.h>
-/* #include <ostream> */
-
 #include "cxxopts.hpp"
 
 void loading_animation();
@@ -73,7 +71,11 @@ void lottery (int n, int c, int p)
 
     std::cout << "\nNumber of matches: " << count << '\n';
     int result;
-    result = pow((float)pot, ((float)count/c)) + 0.5;
+    if (count == 0) {
+        result = 0;
+    }
+    else result = pow((float)pot, ((float)count/c)) + 0.5;
+
     std::cout << "\nYou got " << count << " out of " << c << " correct guesses and win " << result  << " beer tokens\n";
 
     return;
