@@ -13,6 +13,7 @@ void lottery (int n, int c, int p)
     int pot =  p;
     std::cout << "Pot Size: " << p << '\n';
     std::string user_input;
+    std::cout << "Enter C number of guesses separated by spaces\n";
     std::getline(std::cin, user_input);
 
     std::stringstream ss (user_input);
