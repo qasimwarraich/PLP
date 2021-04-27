@@ -96,6 +96,10 @@ int main(int argc, char *argv[])
         }
     }
 
+    print_map(commands);
+    print_map(transitions);
+    print_map(messages);
+
     bool exit = 0;
     std::string input;
 
@@ -116,7 +120,9 @@ int main(int argc, char *argv[])
             break;
         }
         else {
+            /* if (messages.find(input) != messages.end()){ */ 
             if (messages.find(input) != messages.end()){ 
+                std::cout << "spam " << commands.find(current_state)->second << '\n';
                 std::cout << "\n\n=>" << messages.find(input)->second << " <=\n";
                 current_state = transitions.find(input)->second;
             }
