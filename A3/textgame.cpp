@@ -15,6 +15,7 @@ void parser()
     std::ifstream infile("doggo.gfl");
     std::string temp;
     std::string state;
+    std::string initial_state;
     std::multimap<std::string, std::string> commands;
     std::multimap<std::string, std::string> messages;
     std::multimap<std::string, std::string> transitions;
@@ -24,6 +25,10 @@ void parser()
             continue;
         /* Parsing state titles */ 
         if (temp[0] == '@'){
+            if ( temp.find('*') < temp.length()  ){
+                initial_state = temp.substr(temp.find_first_not_of("@*+"));
+                initial_state = initial_state.replace(initial_state.find_first_of(":"),1,"");
+                }
             state = temp.substr(temp.find_first_not_of("@*+"));
             state = state.replace(state.find_first_of(":"),1,"");
             /* std::cout << state << '\n'; */
@@ -37,12 +42,20 @@ void parser()
             std::string message = temp.substr(temp.find_first_of( ':') + 1 );
             std::string transition = command.substr(command.find_first_of( ")" ) + 2);
             transition = transition.erase(transition.find(':')) ;
+
             commands.insert(std::pair<std::string,std::string> (state, command.erase(command.find( ")" )) ));
             messages.insert(std::pair<std::string,std::string> (command, message));
             transitions.insert(std::pair<std::string,std::string> (command, transition));
-            /* commands.insert(state, command);*/
         }
     }    
+
+        /* print_map(commands); */ 
+        /* print_map(messages); */ 
+        /* print_map(transitions); */ 
+}
+
+std::map<std::string, std::string> parse_graphics()
+{
     /* This part aims to isolate the graphic and store it as a long string with 
      * appened newline chars to keep formatting
      */
@@ -55,6 +68,7 @@ void parser()
         if (temp2[0] == '@') {
             /* Get title of graphic as key for the map */
             std::string title = temp2.substr(temp2.find_first_not_of("@*+"));
+            title = title.erase(title.find(':'));
 
             /* Stop when a state transition line detected */
             while (std::getline(infile2, temp2)){
@@ -67,25 +81,35 @@ void parser()
             graphic_of_state.clear();
         }
     }
-        print_map(commands); 
-        print_map(messages); 
-        print_map(transitions); 
+    return graphics_map;
 }
 
 
 void print_map(std::multimap<std::string, std::string> &m)
 {
     for (const auto& x : m) {
-        std::cout << "Key: " << x.first << "\tVal: " << x.second << "\n";
+        std::cout << "Key: " << x.first << "\t\tVal: " << x.second << "\n";
     }
     std::cout << "\n";
 }
 
+void print_graphics_map(std::map<std::string, std::string> &m)
+{
+    for (const auto& x : m) {
+        std::cout << "Key: " << x.first << "\t\tVal: " << x.second << "\n";
+    }
+    std::cout << "\n";
+}
 
 int main(int argc, char *argv[])
 {
+    std::map<std::string, std::string> graphics_map;
     /* std::cout << argv[0] << '\n'; */
     parser();
+    
+    graphics_map = parse_graphics();
+    /* print_graphics_map(graphics_map); */
+    std::cout << graphics_map["Sleeping"]; 
 
     return 0;
 }
