@@ -22,12 +22,21 @@ std::map<std::string, std::string> parse_graphics(std::string gamefile)
             if (title.find(':') < title.length())
                 title = title.erase(title.find(':'));
 
-            /* Stop when a state transition line detected */
+            
+            /* tellg and seekg combo handle case of no transitions, requires stream
+             * being pushed back one line. the len variable trails the current
+             * stream position by one. 
+             */
+            auto len = infile.tellg(); 
             while (std::getline(infile, temp)){
+
+            /* Stop when a state transition line detected */
                 if (temp[0] == '>')
                     break;
-                if (temp[0] == '@')
+                if (temp[0] == '@'){
+                    infile.seekg(len);
                     break;
+                }
                 
                 graphic_of_state.append(temp + '\n');
                 graphics_map[title] = graphic_of_state;
