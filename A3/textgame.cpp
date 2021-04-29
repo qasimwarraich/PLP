@@ -1,9 +1,12 @@
-#include <cstdio>
-#include <fstream>
 #include <iostream>
-#include <map>
+#include <fstream>
 #include <ostream>
 #include <string>
+#include <map>
+
+/* Debugging functions for the map datastrucutres */
+void print_map(std::multimap<std::string, std::string>& m);
+void print_graphics_map(std::map<std::string, std::string>& m);
 
 std::map<std::string, std::string> parse_graphics(std::string gamefile)
 {
@@ -36,7 +39,6 @@ std::map<std::string, std::string> parse_graphics(std::string gamefile)
                     infile.seekg(len);
                     break;
                 }
-
                 graphic_of_state.append(temp + '\n');
                 graphics_map[title] = graphic_of_state;
             }
@@ -46,28 +48,8 @@ std::map<std::string, std::string> parse_graphics(std::string gamefile)
     return graphics_map;
 }
 
-void print_map(std::multimap<std::string, std::string>& m)
-{
-    for (const auto& x : m) {
-        std::cout << "Key: " << x.first << "\t\tVal: " << x.second << "\n";
-    }
-    std::cout << "\n";
-}
-
-void print_graphics_map(std::map<std::string, std::string>& m)
-{
-    for (const auto& x : m) {
-        std::cout << "Key: "
-                  << "'" << x.first << "'"
-                  << "\t\tVal: " << x.second << "\n";
-    }
-    std::cout << "\n";
-}
-
 int main(int argc, char* argv[])
 {
-    /* std::cout << argv[0] << '\n'; */
-
     std::string gamefile;
     if (argv[1])
         gamefile = argv[1];
@@ -157,4 +139,23 @@ int main(int argc, char* argv[])
         }
     }
     return 0;
+}
+
+/* Debugging functions */
+void print_map(std::multimap<std::string, std::string>& m)
+{
+    for (const auto& x : m) {
+        std::cout << "Key: " << x.first << "\t\tVal: " << x.second << "\n";
+    }
+    std::cout << "\n";
+}
+
+void print_graphics_map(std::map<std::string, std::string>& m)
+{
+    for (const auto& x : m) {
+        std::cout << "Key: "
+                  << "'" << x.first << "'"
+                  << "\t\tVal: " << x.second << "\n";
+    }
+    std::cout << "\n";
 }
