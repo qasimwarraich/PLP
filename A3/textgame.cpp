@@ -1,6 +1,5 @@
 #include <iostream>
 #include <fstream>
-#include <ostream>
 #include <string>
 #include <map>
 
@@ -116,8 +115,8 @@ int main(int argc, char* argv[])
 
     std::cout << "******************************************\n"
               << "**Welcome to a text based adventure game**\n"
-              << "******************************************"
-              << "\n\n\n";
+              << "******************************************\n";
+
     std::string current_state = initial_state;
 
     while (!exit) {
