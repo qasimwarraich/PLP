@@ -113,7 +113,9 @@ int main(int argc, char* argv[])
     bool exit = 0;
     std::string input;
 
-    std::cout << "**Welcome to a text based adventure game**"
+    std::cout << "******************************************"
+              << "**Welcome to a text based adventure game**"
+              << "******************************************"
               << "\n\n\n";
     std::string current_state = initial_state;
 
