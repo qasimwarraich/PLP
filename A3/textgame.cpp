@@ -54,7 +54,14 @@ void print_graphics_map(std::map<std::string, std::string> &m)
 int main(int argc, char *argv[])
 {
     /* std::cout << argv[0] << '\n'; */
-    std::ifstream infile("doggo.gfl");
+
+    std::string gamefile;
+    if ( argv[1] )
+        gamefile = argv[1];
+    else
+        gamefile = "doggo.gfl";
+
+    std::ifstream infile(gamefile);
     std::string temp;
     std::string state;
     std::string initial_state;
@@ -112,7 +119,7 @@ int main(int argc, char *argv[])
         std::cout << graphics_map[current_state];
         if (current_state == "GameOver")
             break;
-        std::cout << "> Doggo is currently [" << current_state << "] Enter a command from above\n";
+        std::cout << "> State is currently [" << current_state << "] Enter a command from above\n";
         /* std::cin >> input; */ 
         std::getline(std::cin, input);
         if (input == "quit" ) {
