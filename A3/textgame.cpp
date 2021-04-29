@@ -88,7 +88,6 @@ int main(int argc, char* argv[])
 
             if (state.find(' ') < state.length())
                 state = state.erase(state.find(' '));
-            /* std::cout << state << '\n'; */
         }
         /* Parsing Possible Transitions */
         if (temp[0] == '>') {
@@ -106,32 +105,31 @@ int main(int argc, char* argv[])
         }
     }
 
+    /* Debugging */
     print_map(commands);
     print_map(transitions);
     print_map(messages);
 
+    /* Game loop starts here. */
     bool exit = 0;
     std::string input;
 
-    std::cout << "******************************************"
-              << "**Welcome to a text based adventure game**"
+    std::cout << "******************************************\n"
+              << "**Welcome to a text based adventure game**\n"
               << "******************************************"
               << "\n\n\n";
     std::string current_state = initial_state;
 
     while (!exit) {
-
         std::cout << graphics_map[current_state];
         if (current_state == "GameOver" || current_state == "Outside")
             break;
         std::cout << "> State is currently [" << current_state << "] Enter a command from above\n";
-        /* std::cin >> input; */
         std::getline(std::cin, input);
         if (input == "quit") {
             exit = 1;
             break;
         } else {
-            /* if (messages.find(input) != messages.end()){ */
             if (messages.find(input) != messages.end()) {
                 std::cout << "spam " << commands.find(current_state)->second << '\n';
                 std::cout << "\n\n=>" << messages.find(input)->second << " <=\n";
