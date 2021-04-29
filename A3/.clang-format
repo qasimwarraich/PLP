@@ -1,0 +1,8 @@
+﻿---
+BasedOnStyle: WebKit
+AlignTrailingComments: 'false'
+BreakBeforeBraces: Linux
+IndentWidth: '4'
+TabWidth: '4'
+
+...
