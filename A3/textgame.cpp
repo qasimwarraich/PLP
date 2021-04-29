@@ -138,7 +138,7 @@ int main(int argc, char *argv[])
 
 
         std::cout << graphics_map[current_state];
-        if (current_state == "GameOver")
+        if (current_state == "GameOver" || current_state == "Outside")
             break;
         std::cout << "> State is currently [" << current_state << "] Enter a command from above\n";
         /* std::cin >> input; */ 
