@@ -10,7 +10,7 @@ void print_graphics_map(std::map<std::string, std::string>& m);
 std::map<std::string, std::string> parse_graphics(std::string gamefile)
 {
     /* This part aims to isolate the graphic and store it as a long string with 
-     * appened newline chars to keep formatting
+     * appended newline chars to keep formatting
      */
     std::ifstream infile(gamefile);
     std::string temp;
@@ -68,7 +68,7 @@ int main(int argc, char* argv[])
 
     print_graphics_map(graphics_map);
 
-    /* Parse states, intial state, transitions and messages */
+    /* Parse states, inital state, transitions and messages */
     while (std::getline(infile, temp)) {
         if (temp.length() == 0)
             continue;
