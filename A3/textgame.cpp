@@ -66,7 +66,7 @@ int main(int argc, char* argv[])
 
     graphics_map = parse_graphics(gamefile);
 
-    print_graphics_map(graphics_map);
+    /* print_graphics_map(graphics_map); */
 
     /* Parse states, inital state, transitions and messages */
     while (std::getline(infile, temp)) {
@@ -105,9 +105,9 @@ int main(int argc, char* argv[])
     }
 
     /* Debugging */
-    print_map(commands);
-    print_map(transitions);
-    print_map(messages);
+    /* print_map(commands); */
+    /* print_map(transitions); */
+    /* print_map(messages); */
 
     /* Game loop starts here. */
     bool exit = 0;
@@ -130,7 +130,7 @@ int main(int argc, char* argv[])
             break;
         } else {
             if (messages.find(input) != messages.end()) {
-                std::cout << "spam " << commands.find(current_state)->second << '\n';
+                std::cout << commands.find(current_state)->second << '\n';
                 std::cout << "\n\n=>" << messages.find(input)->second << " <=\n";
                 current_state = transitions.find(input)->second;
             } else
