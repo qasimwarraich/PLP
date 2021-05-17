@@ -10,7 +10,7 @@ void print_graphics_map(std::map<std::string, std::string>& m);
 std::map<std::string, std::string> parse_graphics(std::string gamefile)
 {
     /* This part aims to isolate the graphic and store it as a long string with 
-     * appened newline chars to keep formatting
+     * appended newline chars to keep formatting
      */
     std::ifstream infile(gamefile);
     std::string temp;
@@ -66,9 +66,9 @@ int main(int argc, char* argv[])
 
     graphics_map = parse_graphics(gamefile);
 
-    print_graphics_map(graphics_map);
+    /* print_graphics_map(graphics_map); */
 
-    /* Parse states, intial state, transitions and messages */
+    /* Parse states, inital state, transitions and messages */
     while (std::getline(infile, temp)) {
         if (temp.length() == 0)
             continue;
@@ -105,9 +105,9 @@ int main(int argc, char* argv[])
     }
 
     /* Debugging */
-    print_map(commands);
-    print_map(transitions);
-    print_map(messages);
+    /* print_map(commands); */
+    /* print_map(transitions); */
+    /* print_map(messages); */
 
     /* Game loop starts here. */
     bool exit = 0;
@@ -130,7 +130,7 @@ int main(int argc, char* argv[])
             break;
         } else {
             if (messages.find(input) != messages.end()) {
-                std::cout << "spam " << commands.find(current_state)->second << '\n';
+                std::cout << commands.find(current_state)->second << '\n';
                 std::cout << "\n\n=>" << messages.find(input)->second << " <=\n";
                 current_state = transitions.find(input)->second;
             } else
