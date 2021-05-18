@@ -10,6 +10,7 @@
 \usepackage{xcolor}
 \usepackage{hyperref}
 \usepackage[T1]{fontenc}
+\usepackage{listings}
 
 % Minted config
 \definecolor{bg}{HTML}{282828} %gruvbox bg col
@@ -21,6 +22,8 @@ fontsize=\footnotesize,
 linenos
 }
 \usemintedstyle{gruvbox}
+\renewcommand\listingscaption{Code}
+
 %
 
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
@@ -53,6 +56,8 @@ cpp, c++, programming languages
 \section{Introduction}
 The C++ programming language is an extremely successfull and widely used multi paradigm general purpose programming language. It has many reputations, some admire it for it's versitility, some adore it's portability and low level features and others crticise it for it's lack of direction and complexity but it has managed to stand the test of time for almost four decades and shows no signs of slowing down. It is still one of the most widely used programming languages and finds it's self at the core of many popular pieces of software e.g. Mozilla Firefox, MySQL, certain Adobe software, Microsoft Office, KDE, etc. A non exhaustive list of C++ applications can be found on the creator of the language Bjarne Stroustrup's website here \cite{cppapplications} .
 
+\begin{listing}[h]
+    
 \begin{minted}{cpp}
 
 
@@ -60,15 +65,13 @@ The C++ programming language is an extremely successfull and widely used multi p
 
 int main()
 {
-    std::cout << "SPAM" << '\n';
+    std::cout << "Hello World" << '\n';
     return 0;
 }
-
 \end{minted}
-
-\cite{cppevolving} 
-\cite{cpphome}
-
+\caption{Hello World Example}
+\label{listing:1}
+\end{listing}
 
 \section{History}
 
