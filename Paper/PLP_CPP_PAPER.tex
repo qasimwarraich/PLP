@@ -8,7 +8,19 @@
 \usepackage{textcomp}
 \usepackage{xcolor}
 \usepackage{hyperref}
-% \usepackage{minted}
+
+
+\definecolor{bg}{HTML}{282828}
+\usepackage{minted}
+% Minted style settings
+\setminted[cpp]{
+baselinestretch=1.2,
+bgcolor=bg,
+fontsize=\footnotesize,
+linenos
+}
+\usemintedstyle{gruvbox}
+%
 
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
@@ -41,6 +53,21 @@ cpp, c++, programming languages
 \section{Introduction}
 This document is a model and instructions for \LaTeX.
 Please observe the conference page limits. 
+
+
+\begin{minted}{cpp}
+
+
+#include <iostream>
+
+int main()
+{
+    std::cout << "SPAM" << '\n';
+    return 0;
+}
+
+\end{minted}
+
 
 
 \subsection{\LaTeX-Specific Advice}
