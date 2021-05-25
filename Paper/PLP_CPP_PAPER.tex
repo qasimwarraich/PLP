@@ -17,6 +17,7 @@
 \usepackage{minted}
 \setminted[cpp]{
 baselinestretch=1.2,
+breaklines,
 linenos,
 bgcolor=bg,
 fontsize=\footnotesize,
@@ -94,7 +95,7 @@ The C++ programming language comprises of two main implementation goals. It aims
 
 \subsection{ The C in C++}
 
-The syntax of C++ is mostly inherited from C as illustrated by the Hello World code in \hyperref[listing:1]{Code 1}. This trivial example highlights the clear similarities between the two languages but also some ways in which they diverge. This is clearly seen by C++'s usage of an operator (<< and >>) to handle IO rather than the C equivalent library functions. This extremely simple example also introduces two more features that are extremely characteristic of C++. Firstly the usage of namespaces as shows by the reference to "std" followed by the scope operator (::) and secondly the usage of of the STL where the function "cout" resides. The similarities and compatibility with C is a reoccurring theme in the design of C++ and a note worthy example of this is the fact that C++ has full support for both C styled null terminated strings and it's very on string class. In fact command line argument parsing is exactly as it is in C and uses C style strings. Similar to C, C++ also employs the use of a main function as the starting point of the program. Compatability with C is not 100\% and C is by no means a subset of C++, but it's influence on the language and the design around keeping some semblance of compatibility (even of libraries) are a clear indicator of the roots of the language. A more comprehensive review can be found here \cite{calder1994quantifying}.
+The syntax of C++ is mostly inherited from C as illustrated by the Hello World code in \hyperref[listing:1]{Code 1}. This trivial example highlights the clear similarities between the two languages but also some ways in which they diverge. This is clearly seen by C++'s usage of an operator (\mintinline{cpp}{<<} and \mintinline{cpp}{>>}) to handle IO rather than the C equivalent library functions. This extremely simple example also introduces two more features that are extremely characteristic of C++. Firstly the usage of namespaces as shows by the reference to "std" followed by the scope operator (::) and secondly the usage of of the STL where the function "cout" resides. The similarities and compatibility with C is a reoccurring theme in the design of C++ and a note worthy example of this is the fact that C++ has full support for both C styled null terminated strings and it's very on string class. In fact command line argument parsing is exactly as it is in C and uses C style strings. Similar to C, C++ also employs the use of a main function as the starting point of the program. Compatability with C is not 100\% and C is by no means a subset of C++, but it's influence on the language and the design around keeping some semblance of compatibility (even of libraries) are a clear indicator of the roots of the language. A more comprehensive review can be found here \cite{calder1994quantifying}.
 
 \subsection{Memory Management}
 
@@ -104,7 +105,7 @@ C++ is well known for it's deliberate design choice to not support garbage colle
     \item Static Storage: Objects created before the entry of main() and destroyed in reverse order after main() exits.
     \item Thread Storage:  Objects are created similarly as in static storage but the creation time is thread dependent. Creation is just prior to thread creation and destruction occurs just after the thread has been joined. 
     \item Automatic Storage: This is scope based memory management and creation occurs at the point the execution passes the declaration and destruction follows as son as the local scope of declaration is closed. Member variables are created along side the parent and are destroyed when the parent is. This sort of automatic management is the source of a widely used paradigm in C++ termed \textit{Resource Acquisition Is Initialization} or \textbf{(RAII)}.
-    \item Dynamic Storage: In dynamic storage objects have a dynamic life span and creation/deletion is explicitly handled by the respective operators new/delete. As of C++11 and the introduction of smart pointers the usage of new has been advised against in favour of smart pointers such as make\_unique<T> and make\_shared<T>.
+    \item Dynamic Storage: In dynamic storage objects have a dynamic life span and creation/deletion is explicitly handled by the respective operators new/delete. As of C++11 and the introduction of smart pointers the usage of new has been advised against in favour of smart pointers such as \mintinline{cpp}{make _unique<T>} and \mintinline{cpp}{make _shared<T>}.
 
 \end{itemize}
 
@@ -146,8 +147,7 @@ The STL is as much a part of the C++ standard as the language itself. The STL is
 //auto is also useful for reducing the verbosity of
 //the code. For instance, instead of writing
 
-for (std::vector<int>::const_iterator itr = myvec.c-
-begin();
+for (std::vector<int>::const_iterator itr = myvec.cbegin();
     itr != myvec.cend();
     ++itr)
 
@@ -164,7 +164,7 @@ for (auto& x : myvec)
         
     \end{minted}
 
-    \caption{Modern C++ example: auto operator and range based for loops. \cite{C++11_2021} Note: line 4 is hyphenated for spacing }
+    \caption{Modern C++ example: auto operator and range based for loops. \cite{C++11_2021} }
 \label{listing:3}
 \end{listing}
 
@@ -176,7 +176,7 @@ C++ is an extremely versatile language with a myriad of applications. It does ha
 Ken Thompson:
 "It certainly has its good points. But by and large I think it’s a bad language. It does a lot of things half well and it’s just a garbage heap of ideas that are mutually exclusive. Everybody I know, whether it’s personal or corporate, selects a subset and these subsets are different. So it’s not a good language to transport an algorithm—to say, “I wrote it; here, take it.” It’s way too big, way too complex. And it’s obviously built by a committee. Stroustrup campaigned for years and years and years, way beyond any sort of technical contributions he made to the language, to get it adopted and used. And he sort of ran all the standards committees with a whip and a chair. And he said “no” to no one. He put every feature in that language that ever existed. It wasn’t cleanly designed—it was just the union of everything that came along. And I think it suffered drastically from that." \cite{Seibel_2009}
 
-Brian Kerrigan:
+Brian Kernighan:
 "C++ has been enormously influential. ... Lots of people say C++ is too big and too complicated etc. etc. but in fact it is a very powerful language and pretty much everything that is in there is there for a really sound reason: it is not somebody doing random invention, it is actually people trying to solve real world problems. Now a lot of the programs that we take for granted today, that we just use, are C++ programs." \cite{bkcomputerphile}
 
 There is a lot to be said about the complexity of C++, even Bjarne Stroustrup admits that "within C++, there is a much smaller and cleaner language struggling to get out" \cite{cppquotes}. But there is also a lot to be said about the community and interest behind C++. The language has carved it's niche as the language for when a combination of performance and implementation flexibility are crucial. Being based on C and using a similar compiler and tooling suite has probably also done it some favours along the way in terms of adoption and it's popularity in systems and embedded programming. The language seems to show no evidence of slowing down and the community and standards committee are constantly working and iterating on the language to address the issues of complexity (see: \hyperref[listing:3]{Code 3}) and to make it the language that can do all things for all people . Whether this is a worthwhile goal to set is subject to debate. 
